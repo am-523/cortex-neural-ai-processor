@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CORTEX SYNAPSE X1 — Next-Gen Neuromorphic AI Silicon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- Minimalist Loading Screen -->
+  <div id="loader" class="loader">
+    <div class="loader-content">
+      <div class="loader-brand">/// CORTEX SYNAPSE X1</div>
+      <div class="loader-tag">INITIALIZING NEURAL FABRIC...</div>
+      <div class="loader-progress-track">
+        <div id="loader-bar" class="loader-bar"></div>
+      </div>
+      <div id="loader-percent" class="loader-percent">0%</div>
+    </div>
+  </div>
+
+  <!-- Apple iOS Liquid Glass Navigation Bar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <div class="nav-left">
+        <button class="ios-glass-pill nav-icon-pill" aria-label="Open Menu">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <span>MENU</span>
+        </button>
+        <a href="#act-2" class="ios-glass-pill nav-text-pill">SPECS</a>
+      </div>
+
+      <a href="#act-1" class="brand-logo">
+        <span class="logo-mark">///</span>
+        <span class="logo-text">CORTEX</span>
+        <span class="logo-sub">SYNAPSE X1</span>
+      </a>
+
+      <div class="nav-right">
+        <span class="ios-glass-pill nav-text-pill status-pill">
+          <span class="status-dot"></span>
+          <span>2.1 NM WAFER</span>
+        </span>
+        <a href="#act-4" class="ios-glass-btn-primary">
+          <span>Reserve DevKit</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Canvas Stage & Cinematic Watermark -->
+  <div class="hero-canvas-container" id="heroCanvasContainer">
+    <div class="giant-watermark">CORTEX</div>
+    <canvas id="scrubCanvas"></canvas>
+    <div class="canvas-scrim"></div>
+
+    <!-- Floating Quick Dock at Bottom of Hero -->
+    <div class="floating-dock-wrapper">
+      <div class="floating-dock">
+        <a href="#act-1" class="dock-arrow-pill" aria-label="Next Section">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+        <a href="#act-1" class="dock-link active" data-act="1">Core Silicon</a>
+        <a href="#act-2" class="dock-link" data-act="2">Optical Bus</a>
+        <a href="#act-3" class="dock-link" data-act="3">Tensor Fabric</a>
+        <a href="#act-4" class="dock-link" data-act="4">Deployment</a>
+      </div>
+    </div>
+
+    <!-- Minimal Spec Bar at Bottom -->
+    <div class="hero-spec-strip">
+      <div class="spec-item"><span class="spec-k">PROCESS</span> TSMC 2.1nm N2P</div>
+      <div class="spec-item"><span class="spec-k">COMPUTE</span> 4.8 PETAFLOPS FP8</div>
+      <div class="spec-item"><span class="spec-k">MEMORY</span> 128GB HBM3e @ 9.6 TB/s</div>
+      <div class="spec-item"><span class="spec-k">ENVELOPE</span> 45W ULTRA-EFFICIENT</div>
+    </div>
+  </div>
+
+  <!-- Vertical Scroll Stream: Hero 4-Act Narrative (Alternating Left & Right) -->
+  <main class="story-stream" id="hero">
+    
+    <!-- ACT 1: Left Aligned -->
+    <section class="story-section act-1" id="act-1" data-act="1">
+      <div class="stream-content align-left">
+        <div class="tag-label">ARCHITECTURAL REVOLUTION</div>
+        <h1 class="monumental-heading">
+          SYNAPTIC DENSITY<br />
+          <span class="dim-word">UNBOUNDED SILICON</span>
+        </h1>
+        <p class="section-subtext">
+          The world's first 2.1nm monolithic neuromorphic accelerator. Engineered specifically for recursive transformer reasoning, sub-millisecond latency, and continuous 100,000 token-per-second streaming throughput.
+        </p>
+        <div class="act-actions">
+          <a href="#act-2" class="ios-glass-btn-inline">
+            <span class="play-circle">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+            </span>
+            <span>Explore Silicon Microarchitecture</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 2: RIGHT ALIGNED (Alternating Rhythm) -->
+    <section class="story-section act-2" id="act-2" data-act="2">
+      <div class="stream-content align-right">
+        <div class="tag-label">QUANTUM OPTICAL INTERCONNECT</div>
+        <h2 class="monumental-heading">
+          ZERO-LATENCY<br />
+          <span class="dim-word">DATA MATRIX</span>
+        </h2>
+        <p class="section-subtext">
+          Laser-aligned vertical photonic conduits bridge monolithic compute clusters directly into stacked HBM3e dies, unlocking 9.6 TB/s bidirectional bandwidth with zero copper interconnect drag.
+        </p>
+        <div class="act-actions right-actions">
+          <a href="#act-3" class="ios-glass-btn">
+            <span>Download Technical Whitepaper</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 3: LEFT ALIGNED -->
+    <section class="story-section act-3" id="act-3" data-act="3">
+      <div class="stream-content align-left">
+        <div class="tag-label">MONOLITHIC COMPUTE CORE</div>
+        <h2 class="monumental-heading">
+          RECURSIVE REASONING<br />
+          <span class="dim-word">AT 45W TDP</span>
+        </h2>
+        <p class="section-subtext">
+          Dynamic sparse execution units accelerate FP8, FP4, and sub-byte attention matrices with adaptive power gating. Slashing datacenter cooling footprints by 85% while sustaining peak tensor density.
+        </p>
+        <div class="act-actions">
+          <a href="#act-4" class="ios-glass-btn">
+            <span>View MLPerf Benchmark Data</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 4: RIGHT ALIGNED / CLIMAX -->
+    <section class="story-section act-4" id="act-4" data-act="4">
+      <div class="stream-content align-right">
+        <div class="tag-label">COMMERCIAL DEPLOYMENT</div>
+        <h2 class="monumental-heading">
+          PHYSICAL INTELLIGENCE<br />
+          <span class="dim-word">READY FOR VOLUME</span>
+        </h2>
+        <p class="section-subtext">
+          Now entering volume wafer fabrication. Designed for immediate integration into humanoid robotics platforms, autonomous flight systems, and sovereign high-density rack modules.
+        </p>
+        <div class="act-actions right-actions">
+          <a href="mailto:contact@cortex-silicon.io" class="ios-glass-btn-primary">
+            <span>Reserve Silicon Batch</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+          <a href="#act-1" class="ios-glass-btn">
+            <span>Request SDK Access</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

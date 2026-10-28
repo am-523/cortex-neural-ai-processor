@@ -1,0 +1,510 @@
+/* =====================================================================
+   CORTEX SYNAPSE X1 — AI NEURAL PROCESSOR (CINEMATIC SCROLLCRAFT HERO)
+   ===================================================================== */
+
+:root {
+  --bg-dark: #060709;
+  --bg-surface: #0c0e12;
+  --text-main: #f5f5f7;
+  --text-dim: rgba(245, 245, 247, 0.6);
+  --text-muted: rgba(245, 245, 247, 0.38);
+  --cyan-accent: #00e5ff;
+  --blue-glow: #2979ff;
+  
+  /* Apple 2026 Liquid Glass Tokens */
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-bg-hover: rgba(255, 255, 255, 0.14);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-border-strong: rgba(0, 229, 255, 0.45);
+  --glass-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4), 
+                  inset 0 -1px 1px 0 rgba(0, 0, 0, 0.3), 
+                  0 8px 32px 0 rgba(0, 0, 0, 0.45);
+  --glass-blur: blur(28px) saturate(190%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  width: 100%;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Lenis smooth scrolling base */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* =====================================================================
+   PRELOADER
+   ===================================================================== */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background-color: #050608;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+}
+
+.loader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+}
+
+.loader-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.loader-brand {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: #fff;
+}
+
+.loader-tag {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--cyan-accent);
+  opacity: 0.8;
+}
+
+.loader-progress-track {
+  width: 240px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.loader-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #2979ff, #00e5ff);
+  transition: width 0.15s ease-out;
+}
+
+.loader-percent {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.1em;
+}
+
+/* =====================================================================
+   APPLE LIQUID GLASS BUTTONS & PILLS (2026 SPEC)
+   ===================================================================== */
+.ios-glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ios-glass-pill:hover {
+  background: var(--glass-bg-hover);
+  border-color: rgba(255, 255, 255, 0.32);
+  transform: translateY(-1px);
+}
+
+.status-pill {
+  border-color: rgba(0, 229, 255, 0.3);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cyan-accent);
+  box-shadow: 0 0 10px var(--cyan-accent);
+}
+
+.ios-glass-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #060709;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 229, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ios-glass-btn-primary:hover {
+  background: #eef2ff;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 28px rgba(0, 229, 255, 0.45);
+}
+
+.ios-glass-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ios-glass-btn:hover {
+  background: var(--glass-bg-hover);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.6), 0 10px 30px rgba(0, 229, 255, 0.2);
+}
+
+.ios-glass-btn-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.play-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0, 229, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ios-glass-btn-inline:hover .play-circle {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(0, 229, 255, 0.6);
+}
+
+/* =====================================================================
+   HEADER & NAVBAR
+   ===================================================================== */
+.navbar-wrapper {
+  position: fixed;
+  top: 18px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
+  pointer-events: none;
+}
+
+.navbar {
+  width: 100%;
+  max-width: 1240px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: auto;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.logo-mark {
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: var(--cyan-accent);
+}
+
+.logo-text {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.logo-sub {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* =====================================================================
+   FIXED HERO CANVAS STAGE
+   ===================================================================== */
+.hero-canvas-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--bg-dark);
+  overflow: hidden;
+}
+
+#scrubCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: contrast(1.12) brightness(1.06);
+}
+
+.canvas-scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(6, 7, 9, 0.05) 0%, rgba(6, 7, 9, 0.55) 100%);
+  pointer-events: none;
+}
+
+/* Giant Typographic Watermark behind canvas */
+.giant-watermark {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(90px, 18vw, 280px);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Floating Bottom Dock inside Hero */
+.floating-dock-wrapper {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+.floating-dock {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  background: rgba(12, 14, 18, 0.75);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
+}
+
+.dock-arrow-pill {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.dock-arrow-pill:hover {
+  transform: scale(1.1);
+}
+
+.dock-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.dock-link:hover, .dock-link.active {
+  color: #ffffff;
+}
+
+/* Bottom Spec Strip */
+.hero-spec-strip {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.14em;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.spec-k {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+/* =====================================================================
+   VERTICAL NARRATIVE STREAM (HERO 4 ACTS)
+   ===================================================================== */
+.story-stream {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
+.story-section {
+  position: relative;
+  min-height: 130vh;
+  display: flex;
+  align-items: center;
+  padding: 0 7vw;
+}
+
+.stream-content {
+  max-width: 640px;
+  pointer-events: auto;
+}
+
+/* Alternating Left & Right Alignment */
+.align-left {
+  margin-right: auto;
+  text-align: left;
+}
+
+.align-right {
+  margin-left: auto;
+  text-align: right;
+}
+
+.right-actions {
+  justify-content: flex-end;
+}
+
+.tag-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--cyan-accent);
+  margin-bottom: 14px;
+}
+
+.monumental-heading {
+  font-size: clamp(36px, 5.5vw, 76px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.dim-word {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.section-subtext {
+  font-size: clamp(14px, 1.2vw, 17px);
+  line-height: 1.65;
+  color: rgba(245, 245, 247, 0.78);
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+.align-right .section-subtext {
+  margin-left: auto;
+}
+
+.act-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* =====================================================================
+   RESPONSIVE DESIGN
+   ===================================================================== */
+@media (max-width: 768px) {
+  .hero-spec-strip {
+    display: none;
+  }
+
+  .floating-dock-wrapper {
+    display: none;
+  }
+
+  .story-section {
+    min-height: 110vh;
+    padding: 0 6vw;
+  }
+
+  .stream-content {
+    max-width: 100%;
+  }
+}
